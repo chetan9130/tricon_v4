@@ -26,12 +26,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <ClerkProvider appearance={{
-      variables: {
-        colorPrimary: "#C96342"
-      }
-    }}>
+  const disableClerk = process.env.NEXT_PUBLIC_DISABLE_CLERK === 'true';
+
+  const app = (
     <TRPCReactProvider>
       <html lang="en" suppressHydrationWarning>
         <body
@@ -49,6 +46,19 @@ export default function RootLayout({
         </body>
       </html>
     </TRPCReactProvider>
+  );
+
+  if (disableClerk) {
+    return app;
+  }
+
+  return (
+    <ClerkProvider appearance={{
+      variables: {
+        colorPrimary: "#C96342"
+      }
+    }}>
+      {app}
     </ClerkProvider>
   );
 }

@@ -114,6 +114,7 @@ export function ReviewTab({ projectId }: ReviewTabProps) {
               onClick={handleGenerateReview}
               disabled={isGenerating || review?.status === 'IN_PROGRESS'}
               size="sm"
+                 className="ml-auto bg-sky-500 text-white hover:bg-sky-600"
             >
               {isGenerating || review?.status === 'IN_PROGRESS' ? (
                 <>
@@ -122,7 +123,7 @@ export function ReviewTab({ projectId }: ReviewTabProps) {
                 </>
               ) : (
                 <>
-                  <FileSearch className="w-4 h-4 mr-2" />
+                  <FileSearch className="w-4 h-4 mr-2"  />
                   {review ? 'New Review' : 'Start Review'}
                 </>
               )}
@@ -195,7 +196,8 @@ export function ReviewTab({ projectId }: ReviewTabProps) {
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center space-y-3">
-              <Button onClick={handleGenerateReview} size="lg">
+              <Button onClick={handleGenerateReview} size="lg"   className="ml-auto bg-sky-500 text-white hover:bg-sky-600"
+              >
                 <FileSearch className="w-4 h-4 mr-2" />
                 Start Code Review
               </Button>
